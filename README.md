@@ -10,7 +10,7 @@ it shows the expected number of generations to establish a mutation (against gen
 
 ## Importance of population size $N_e$
 
-In this [Dwarkesh interview](https://youtu.be/sRKBGVFVYAw?si=3-HM7qbEecfYNqal&t=3649) David Reich suggests that for human populations larger than $\approx 10^6$ "every mutation that can occur does occur within a couple of generations$. This is off, and does not account for the genetic drift (i.e. initial stochasticity of the process) that kills most of beneficial mutants. Indeed, for such $N_e$ regardless of $s$ the time required for a mutation to successfuly estabilish dominates:
+In this [Dwarkesh interview](https://youtu.be/sRKBGVFVYAw?si=3-HM7qbEecfYNqal&t=3649) David Reich suggests that for human populations larger than $\approx 10^6$ "every mutation that can occur does occur within a couple of generations". This is off, and does not account for the genetic drift (i.e. initial stochasticity of the process) that kills most of beneficial mutants. Indeed, for such $N_e$ regardless of $s$ the time required for a mutation to successfully establish dominates:
 
 $$
 \frac{
@@ -29,7 +29,11 @@ $$
 $$
 
 $$
-P_{\text{est}}=\frac{1-e^{-2s}}{1-e^{-4N_es}} \approx\frac{1}{2N_es}
+P_{\text{est}}=\frac{1-e^{-2s}}{1-e^{-4N_es}}
+$$
+
+$$
+p_{\text{est}}\approx\frac{1}{2N_es}
 $$
 
 as derived below. Example values:
@@ -40,12 +44,13 @@ as derived below. Example values:
 | 0.025 | 30.53 | 2.71 | 0.48 | 0.26 | $3.10 \cdot 10^6$ |
 | 0.005 | 37.14 | 3.30 | 0.68 | 0.40 | $4.62 \cdot 10^6$ |
 
+
 This model separates the timeline into two phases:
 
 1. **Phase 1:** the beneficial mutation must appear and survive early genetic drift.
 2. **Phase 2:** after establishment, the allele grows mainly by deterministic natural selection.
 
-###  Installation
+### Installation
 
 ```
 conda env create -f environment.yml
