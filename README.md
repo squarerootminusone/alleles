@@ -64,21 +64,10 @@ streamlit run allele.py
 
 ### Phase 1: mutation supply and escape from drift
 
-A new beneficial mutation begins as one allele copy. In a diploid population, there are approximately:
 
-$$
-2N_e
-$$
+A new beneficial mutation begins as one allele copy. In a diploid population, there are approximately $2N_e$ allele copies, so new beneficial mutant copies appear at rate $2N_e\mu$ per generation ($t$).
 
-allele copies, so new beneficial mutant copies appear at rate:
-
-$$
-2N_e\mu
-$$
-
-per generation.
-
-Most new beneficial mutations are lost by genetic drift. The establishment probability is:
+However, most new beneficial mutations are lost by genetic drift. The establishment probability is:
 
 ```math
 P_{\text{est}}
@@ -86,13 +75,7 @@ P_{\text{est}}
 \frac{1-e^{-2s}}{1-e^{-4N_es}}
 ```
 
-So the rate at which successful beneficial mutations appear is:
-
-$$
-2N_e\mu P_{\text{est}}
-$$
-
-and the expected waiting time for a successful mutation is:
+and therefore the rate at which successful beneficial mutations appear is $2N_e\mu P_{\text{est}}$. We can calculate the expected waiting time for a successful mutation:
 
 ```math
 T_{\text{wait}}
@@ -100,15 +83,7 @@ T_{\text{wait}}
 \frac{1}{2N_e\mu P_{\text{est}}}
 ```
 
-Once a future-successful mutation appears, its expected early copy-number growth is:
-
-$$
-\mathbb{E}[X_t] = e^{st}
-$$
-
-where $X_t$ is the mutant allele copy count.
-
-The establishment threshold is approximated as:
+Once a future-successful mutation appears, its expected early copy-number growth is $\mathbb{E}[X_t] = e^{st}$ where $X_t$ is the mutant allele copy count. We approximate the establishment threshold as 
 
 $$
 X_{\text{est}} \approx \frac{1}{s}
@@ -166,13 +141,7 @@ After establishment, the allele is common enough that genetic drift is less domi
 \frac{dp}{dt} = sp(1-p)
 ```
 
-where:
-
-- $p$ is allele frequency,
-- $s$ is the selection coefficient,
-- $t$ is time in generations.
-
-The time to grow from establishment frequency $p_{\text{est}}$ to target frequency $p$ is:
+The time to grow from establishment frequency $p_{\text{est}}$ to target frequency $p$ is then:
 
 ```math
 T_{\text{phase 2}}
@@ -181,21 +150,8 @@ T_{\text{phase 2}}
 \log\left(
 \frac{p(1-p_{\text{est}})}
 {p_{\text{est}}(1-p)}
-\right)
-```
-
-The key scaling is the leading factor:
-
-$$
-\frac{1}{s}
-$$
-
-So, for fixed target frequency, the second phase is approximately:
-
-```math
-T_{\text{phase 2}}
-\approx
+\right) \approx
 O\left(\frac{1}{s}\right)
 ```
 
-This means the deterministic growth phase is mostly controlled by selection strength. If $s$ doubles, the allele spreads roughly twice as fast. If $s$ is cut in half, the spread takes roughly twice as long.
+only scaling with $s$! This means the deterministic growth phase is mostly controlled by selection strength. If $s$ doubles, the allele spreads roughly twice as fast. If $s$ is cut in half, the spread takes roughly twice as long.
