@@ -10,7 +10,7 @@ it shows the expected number of generations to establish a mutation (against gen
 
 ## Importance of population size $N_e$
 
-In this [Dwarkesh interview](https://youtu.be/sRKBGVFVYAw?si=3-HM7qbEecfYNqal&t=3649) David Reich suggests that for human populations larger than $\approx 10^6$ "every mutation that can occur does occur within a couple of generations". This is off, and does not account for the genetic drift (i.e. initial stochasticity of the process) that kills most of beneficial mutants. Indeed, for such $N_e$ regardless of $s$ the time required for a mutation to successfully establish dominates:
+In this [Dwarkesh interview](https://youtu.be/sRKBGVFVYAw?si=3-HM7qbEecfYNqal&t=3649) David Reich suggests that for human populations larger than $\approx 10^6$ "every mutation that can occur does occur within a couple of generations". This is off, and does not account for the genetic drift (i.e. initial stochasticity of the process) that kills most of beneficial mutants. Indeed, for such $N_e$ regardless of $s$ the time required for a mutation to successfuly estabilish dominates:
 
 $$
 \frac{
@@ -50,7 +50,7 @@ This model separates the timeline into two phases:
 1. **Phase 1:** the beneficial mutation must appear and survive early genetic drift.
 2. **Phase 2:** after establishment, the allele grows mainly by deterministic natural selection.
 
-### Installation
+###  Installation
 
 ```
 conda env create -f environment.yml
@@ -80,61 +80,61 @@ per generation.
 
 Most new beneficial mutations are lost by genetic drift. The establishment probability is:
 
-\[
+```math
 P_{\text{est}}
 =
 \frac{1-e^{-2s}}{1-e^{-4N_es}}
-\]
+```
 
 So the rate at which successful beneficial mutations appear is:
 
-\[
+$$
 2N_e\mu P_{\text{est}}
-\]
+$$
 
 and the expected waiting time for a successful mutation is:
 
-\[
+```math
 T_{\text{wait}}
 =
 \frac{1}{2N_e\mu P_{\text{est}}}
-\]
+```
 
 Once a future-successful mutation appears, its expected early copy-number growth is:
 
-\[
+$$
 \mathbb{E}[X_t] = e^{st}
-\]
+$$
 
 where $X_t$ is the mutant allele copy count.
 
 The establishment threshold is approximated as:
 
-\[
+$$
 X_{\text{est}} \approx \frac{1}{s}
-\]
+$$
 
 So the expected time from appearance to establishment is:
 
-\[
+```math
 T_{\text{appear}\to\text{est}}
 =
 \frac{\log(1/s)}{s}
-\]
+```
 
 Thus the full early phase is approximately:
 
-\[
+```math
 T_{\text{phase 1}}
 \approx
 \frac{1}{2N_e\mu P_{\text{est}}}
 +
 \frac{\log(1/s)}{s}
-\]
+```
 
 In asymptotic notation:
 
-\[
+```math
 T_{\text{phase 1}}
 =
 O\left(
@@ -142,11 +142,11 @@ O\left(
 +
 \frac{\log(1/s)}{s}
 \right)
-\]
+```
 
 Using the common large-population approximation $P_{\text{est}} \approx 2s$, this becomes:
 
-\[
+```math
 T_{\text{phase 1}}
 =
 O\left(
@@ -154,7 +154,7 @@ O\left(
 +
 \frac{\log(1/s)}{s}
 \right)
-\]
+```
 
 Phase 1 is therefore governed by mutation supply, establishment probability, and early stochastic survival.
 
@@ -162,13 +162,19 @@ Phase 1 is therefore governed by mutation supply, establishment probability, and
 
 After establishment, the allele is common enough that genetic drift is less dominant. Its frequency is modeled by deterministic selection:
 
-\[
+```math
 \frac{dp}{dt} = sp(1-p)
-\]
+```
+
+where:
+
+- $p$ is allele frequency,
+- $s$ is the selection coefficient,
+- $t$ is time in generations.
 
 The time to grow from establishment frequency $p_{\text{est}}$ to target frequency $p$ is:
 
-\[
+```math
 T_{\text{phase 2}}
 =
 \frac{1}{s}
@@ -176,20 +182,20 @@ T_{\text{phase 2}}
 \frac{p(1-p_{\text{est}})}
 {p_{\text{est}}(1-p)}
 \right)
-\]
+```
 
 The key scaling is the leading factor:
 
-\[
+$$
 \frac{1}{s}
-\]
+$$
 
 So, for fixed target frequency, the second phase is approximately:
 
-\[
+```math
 T_{\text{phase 2}}
 \approx
 O\left(\frac{1}{s}\right)
-\]
+```
 
 This means the deterministic growth phase is mostly controlled by selection strength. If $s$ doubles, the allele spreads roughly twice as fast. If $s$ is cut in half, the spread takes roughly twice as long.
