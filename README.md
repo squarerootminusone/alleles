@@ -38,12 +38,16 @@ $$
 
 as derived below. Example values:
 
+<center>
+
 | s | $N_e$ = $10^5$ | $N_e$ = $10^6$ | $N_e$ = $10^7$ | $N_e$ = $10^8$ | Breakpoint $N_e$ |
 |---:|---:|---:|---:|---:|---:|
 | 0.1 | 28.08 | 2.45 | 0.35 | 0.15 | $2.55 \cdot 10^6$ |
 | 0.025 | 30.53 | 2.71 | 0.48 | 0.26 | $3.10 \cdot 10^6$ |
 | 0.005 | 37.14 | 3.30 | 0.68 | 0.40 | $4.62 \cdot 10^6$ |
+</center>
 
+![](graph.png)
 
 This model separates the timeline into two phases:
 
